@@ -28,7 +28,11 @@ public class FixDataManager : MonoBehaviour
 
     public string GetCharaImagePath(int charaId){
         return fixData_charaFixData.GetFixData(charaId).imagePath;
-    }    
+    }
+    
+    public int GetCharaRarity(int charaId){
+        return fixData_charaFixData.GetFixData(charaId).rarity;
+    }
 
     FixData_CharaFixData fixData_charaFixData;
     InGameText_CharaName inGameText_charaName;
