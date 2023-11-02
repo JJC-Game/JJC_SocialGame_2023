@@ -9,7 +9,7 @@ public class Perform_Gacha1
 {
     private GameObject instance;
     private Image image;
-    private Image imageframe;
+    private Image rarity;
     private Text name;
     private Image back;
 
@@ -23,7 +23,7 @@ public class Perform_Gacha1
         rectTrans.anchoredPosition = new Vector2(0, 0);
 
         image = instance.transform.Find("Image").GetComponent<Image>();
-        imageframe = instance.transform.Find("Imageframe").GetComponent<Image>();
+        rarity = instance.transform.Find("Imageframe").GetComponent<Image>();
         name = instance.transform.Find("Name").GetComponent<Text>();
         back = instance.transform.Find("Back").GetComponent<Image>();
 
@@ -63,9 +63,9 @@ public class Perform_Gacha1
         image.sprite = inputSprite;
     }
 
-    public void SetSpriteframe(Sprite inputSprite)
+    public void SetSpriterarity(Sprite inputSprite)
     {
-        imageframe.sprite = inputSprite;
+        rarity.sprite = inputSprite;
     }
 
     private void AfterGacha()

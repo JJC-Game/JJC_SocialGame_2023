@@ -30,8 +30,24 @@ public class FixDataManager : MonoBehaviour
         return fixData_charaFixData.GetFixData(charaId).imagePath;
     }
     
-    public int GetCharaRarity(int charaId){
-        return fixData_charaFixData.GetFixData(charaId).rarity;
+    public string GetCharaRarity(int charaId){
+        return fixData_charaFixData.GetFixData(charaId).rarity.ToString();
+    }
+
+    public string GetCharaRarityFlameImage(int charaId)
+    {
+        switch (GetCharaRarity(charaId))
+        {
+            case "0":
+                return "Textures/RarityFrame/CharaFlame_Common";
+            case "1":
+                return "Textures/RarityFrame/CharaFlame_Rare";
+            case "2":
+                return "Textures/RarityFrame/CharaFlame_UltraRare";
+            default:
+                // charaIdが0、1、2以外の場合のデフォルトの処理をここに追加できます。
+                return "Unknown"; // 例: 不明な場合に "Unknown" を返す
+        }
     }
 
     FixData_CharaFixData fixData_charaFixData;
