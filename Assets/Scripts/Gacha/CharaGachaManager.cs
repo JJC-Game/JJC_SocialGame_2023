@@ -48,6 +48,18 @@ public class CharaGachaManager : MonoBehaviour
     {
         performGacha1.Activate();
         performGacha1.SetSprite(Resources.Load<Sprite>((Application.fixDataManager.GetCharaImagePath(charaId))));
+        if (charaId == 5 || charaId == 10)
+        {
+            performGacha1.SetSpriteframe(Resources.Load<Sprite>("Textures/RarityFrame/wakusozaiUR"));
+        }
+        else if (charaId == 4 || charaId == 9 || charaId == 14)
+        {
+            performGacha1.SetSpriteframe(Resources.Load<Sprite>("Textures/RarityFrame/wakusozaiR"));
+        }
+        else
+        {
+            performGacha1.SetSpriteframe(Resources.Load<Sprite>("Textures/RarityFrame/wakusozaiC"));
+        }
         performGacha1.SetName(Application.fixDataManager.GetCharaName(charaId));
     }
 
