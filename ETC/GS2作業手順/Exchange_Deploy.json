@@ -1,0 +1,300 @@
+{
+  "version": "2019-08-19",
+  "rateModels": [
+    {
+      "name": "Exchange002_Chara001",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara001\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara002",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara002\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara003",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara003\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara004",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara004\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara005",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara005\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara006",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara006\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara007",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara007\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara008",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara008\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara009",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara009\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara010",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara010\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara011",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara011\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara012",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara012\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara013",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara013\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara014",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara014\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara015",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara015\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara016",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara016\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara017",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara017\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara018",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara018\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara019",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara019\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_Chara020",
+      "consumeActions": [],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": [
+        {
+          "action": "Gs2Dictionary:AddEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara020\"\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Exchange002_ClearEntry",
+      "consumeActions": [
+        {
+          "action": "Gs2Dictionary:DeleteEntriesByUserId",
+          "request": "{\n  \"namespaceName\": \"HasCharaDictionary\",\n  \"userId\": \"#{userId}\",\n  \"entryModelNames\": [\n    \"Chara001\",\n    \"Chara002\",\n    \"Chara003\"\n,\n    \"Chara004\",\n    \"Chara005\",\n    \"Chara006\",\n    \"Chara007\",\n    \"Chara008\",\n    \"Chara009\",\n    \"Chara010\",\n    \"Chara011\",\n    \"Chara012\",\n    \"Chara013\",\n    \"Chara014\",\n    \"Chara015\",\n    \"Chara016\",\n    \"Chara017\",\n    \"Chara018\",\n    \"Chara019\",\n    \"Chara020\"  ]\n}"
+        }
+      ],
+      "timingType": "immediate",
+      "lockTime": 0,
+      "enableSkip": false,
+      "skipConsumeActions": [],
+      "acquireActions": []
+    }
+  ],
+  "incrementalRateModels": []
+}

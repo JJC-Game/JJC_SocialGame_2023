@@ -2,3 +2,14 @@
 https://docs.gs2.io/ja/get_start/
 
 Failed to resolve packages: An operation that requires exclusive access to a resource ([C:/work/JJC_SocialGame_2023/Packages]) is already running and must be completed before another can be started.. No packages loaded.
+
+
+マイクロサービスという単位で分かれている。
+
+GS2-Inventoryで、アイテム所持状況
+GS2-Dictionaryで、キャラクター所持状況の管理
+GS2-Formationで、パーティ管理
+GS2-Moneyで、課金ポイントの管理
+
+
+Exchange001_CharaGacha001

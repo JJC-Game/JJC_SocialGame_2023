@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Talk.unity
     guid: 3aaf9d66e06053d4ba2c175005282aec
+  - enabled: 1
+    path: Assets/Scenes/Gacha.unity
+    guid: d713295056a3a3248938405237ad278b
   m_configObjects: {}

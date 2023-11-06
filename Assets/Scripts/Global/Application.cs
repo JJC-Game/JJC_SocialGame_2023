@@ -99,11 +99,28 @@ public class Application : MonoBehaviour
             }
             return null;
         }
-    }   
+    }
+
+    private GS2Manager _gs2Manager;
+    static public GS2Manager gs2Manager
+    {
+        get
+        {
+            if (S != null)
+            {
+                if (S._gs2Manager == null)
+                {
+                    S._gs2Manager = S.gameObject.GetComponent<GS2Manager>();
+                }
+                return S._gs2Manager;
+            }
+            return null;
+        }
+    }
 
     static public bool IsEnableUIControl()
     {
-        if (FadeManager.IsFading())
+        if (FadeManager.IsFading() || !gs2Manager.IsCompleteLogin())
         {
             return false;
         }

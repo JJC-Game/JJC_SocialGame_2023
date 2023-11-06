@@ -1,0 +1,258 @@
+{
+    "version": "2019-02-21",
+    "lotteryModels": [
+      {
+        "name": "CharaGacha001",
+        "metadata": "GACHA",
+        "mode": "normal",
+        "method": "prize_table",
+        "prizeTableName": "PrizeTable_CharaGacha001"
+      }
+    ],
+    "prizeTables": [
+      {
+        "name": "PrizeTable_CharaGacha001",
+        "metadata": "CharaGacha001",
+        "prizes": [
+          {
+            "prizeId": "prize_CharaGacha001_1",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara001"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_2",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara002"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_3",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara003"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_4",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara004"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_5",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara005"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_6",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara006"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_7",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara007"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_8",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara008"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_9",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara009"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_10",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara010"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_11",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara011"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_12",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara012"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_13",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara013"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          },
+          {
+            "prizeId": "prize_CharaGacha001_14",
+            "type": "action",
+            "acquireActions": [
+              {
+                "action": "Gs2Dictionary:AddEntriesByUserId",
+                "request": {
+                    "namespaceName": "HasCharaDictionary",
+                    "userId": "#{userId}",
+                    "entryModelNames": [
+                        "Chara014"
+                    ]
+                }
+              }
+            ],
+            "weight": 1
+          }
+        ]
+      }
+    ]
+  }

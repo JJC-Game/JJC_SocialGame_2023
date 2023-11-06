@@ -24,6 +24,12 @@ public class FixData_CharaFixData
                 CharaFixData currentRow = new CharaFixData();
                 currentRow.id = int.Parse(lineArray[0]);
                 currentRow.imagePath = lineArray[1];
+                currentRow.rarity = int.Parse(lineArray[2]);
+                currentRow.hp = int.Parse(lineArray[3]);
+                currentRow.physicsAtk = int.Parse(lineArray[4]);
+                currentRow.physicsDef = int.Parse(lineArray[5]);
+                currentRow.magicAtk = int.Parse(lineArray[6]);
+                currentRow.magicDef = int.Parse(lineArray[7]);
 
                 m_fixDataList.Add(currentRow);
             }
@@ -62,6 +68,12 @@ public class FixData_CharaFixData
     {
         public int id;
         public string imagePath;
+        public int rarity;
+        public int hp;
+        public int physicsAtk;
+        public int physicsDef;
+        public int magicAtk;
+        public int magicDef;
     }
 
     List<CharaFixData> m_fixDataList;

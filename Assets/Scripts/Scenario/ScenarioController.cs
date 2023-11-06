@@ -47,7 +47,7 @@ public class ScenarioController : MonoBehaviour
 
             GameObject.Find("TextPlate/Text").GetComponent<Text>().text = talkStr;
 
-            DefineParam.CHARA_ID talkChara = scenarioScriptRow.charaId;
+            int talkChara = scenarioScriptRow.charaId;
             Debug.Log("セリフ キャラID" + talkChara.ToString());
             string charaName = Application.fixDataManager.GetCharaName(talkChara);
 

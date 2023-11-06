@@ -8,7 +8,7 @@ public class ScenarioScriptLoader : MonoBehaviour
     void Awake(){
         scenarioId = Application.appSceneManager.GetScenarioId();
 
-        if(scenarioId == DefineParam.SCENARIO_ID.SCENARIO_INVALID){
+        if(scenarioId == DefineParam.SCENARIO_INVALID){
             scenarioId = debugPlayScenarioId;
         }
 
@@ -35,7 +35,7 @@ public class ScenarioScriptLoader : MonoBehaviour
             currentRow.rawText = line;
 
             string[] lineArray = line.Split(',');
-            currentRow.charaId = (DefineParam.CHARA_ID)(int.Parse(lineArray[0]));
+            currentRow.charaId = int.Parse(lineArray[0]);
             currentRow.charaTalkText = lineArray[1];
             m_scenarioScriptRowList.Add(currentRow);
         }
@@ -62,12 +62,12 @@ public class ScenarioScriptLoader : MonoBehaviour
 
     public struct ScenarioScriptRow{
         public string rawText; // 生テキスト.
-        public DefineParam.CHARA_ID charaId;
+        public int charaId;
         public string charaTalkText;
     }
 
-    DefineParam.SCENARIO_ID scenarioId;
+    int scenarioId;
     List<ScenarioScriptRow> m_scenarioScriptRowList = null;
 
-    public DefineParam.SCENARIO_ID debugPlayScenarioId;
+    public int debugPlayScenarioId;
 }

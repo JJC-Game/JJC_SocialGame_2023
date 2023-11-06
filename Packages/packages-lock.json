@@ -219,7 +219,7 @@
       "url": "https://packages.unity.com"
     },
     "io.gs2.csharp.sdk": {
-      "version": "2023.10.3",
+      "version": "2023.10.10",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -228,11 +228,21 @@
       "url": "https://upm.gs2.io/npm"
     },
     "io.gs2.unity.sdk": {
-      "version": "2023.10.7",
+      "version": "2023.10.18",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "io.gs2.csharp.sdk": "2022.9.2"
+      },
+      "url": "https://upm.gs2.io/npm"
+    },
+    "io.gs2.unity.sdk.uikit": {
+      "version": "2023.10.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "io.gs2.unity.sdk": "2022.2.6"
       },
       "url": "https://upm.gs2.io/npm"
     },

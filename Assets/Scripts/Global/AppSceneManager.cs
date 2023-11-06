@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,15 +9,16 @@ public class AppSceneManager : MonoBehaviour
 {
     public DefineParam.SCENE_ID currentSceneId;
 
-    public DefineParam.SCENARIO_ID currentScenarioId;
-    public DefineParam.CHARA_ID currentCharaId;
+    public int currentScenarioId;
+    public int currentCharaId;
 
     UnityAction scenarioPopOutCallbackFunc;
+    public DefineParam.SCENE_ID scenarioPopOutSceneId;
 
     void Awake(){
-        currentScenarioId = DefineParam.SCENARIO_ID.SCENARIO_INVALID;
-        currentCharaId = DefineParam.CHARA_ID.CHARA_INVALID;
-        scenarioPopOutCallbackFunc = TestFunc;
+        currentScenarioId = DefineParam.SCENARIO_INVALID;
+        currentCharaId = DefineParam.CHARA_INVALID;
+        scenarioPopOutCallbackFunc = ScenarioPopOut;
     }
 
     // Start is called before the first frame update
@@ -32,11 +33,11 @@ public class AppSceneManager : MonoBehaviour
         
     }
 
-    public void SetScenarioId(DefineParam.SCENARIO_ID scenarioId){
+    public void SetScenarioId(int scenarioId){
         currentScenarioId = scenarioId;
     }
 
-    public DefineParam.SCENARIO_ID GetScenarioId(){
+    public int GetScenarioId(){
         return currentScenarioId;
     }    
 
@@ -50,13 +51,18 @@ public class AppSceneManager : MonoBehaviour
         return scenarioPopOutCallbackFunc;
     }
 
-    public void TestFunc(){
+    public void ScenarioPopOut(){
         Debug.Log("シナリオが終わったよ");
-        ChangeScene(DefineParam.SCENE_ID.Lobby);
+        ChangeScene(scenarioPopOutSceneId);
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
-    }    
+    }
+
+    public void SetScenarioPopOutSceneId(DefineParam.SCENE_ID inputSceneId)
+    {
+        scenarioPopOutSceneId = inputSceneId;
+    }
 }

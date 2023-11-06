@@ -10,7 +10,7 @@ if(Test-Path $excelPath){
     $excel = New-Object -ComObject Excel.Application
 
             
-    for ($i=1; $i -lt 16; $i++){
+    for ($i=1; $i -lt 500; $i++){
 
         $targetScenarioName = "Scenario" + "{0:000}" -f $i
         $targetExcelFileName = $targetScenarioName + ".xlsm"
@@ -18,6 +18,12 @@ if(Test-Path $excelPath){
 
         $writeString = $excelFileName + "ÇÃä÷êî" + $excelFunctionName + "Ç" + $targetExcelFileName + "å¸ÇØÇ…åƒÇ—èoÇµÇƒÇ¢Ç‹Ç∑."
         Write-Output $writeString
+
+        if(Test-Path $targetExcelPath){
+
+        }else{
+            continue
+        }
     
 
         try
