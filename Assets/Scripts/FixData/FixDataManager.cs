@@ -34,16 +34,16 @@ public class FixDataManager : MonoBehaviour
         return fixData_charaFixData.GetFixData(charaId).rarity.ToString();
     }
 
-    public string GetCharaRarityFlameImage(int charaId)
+    public string GetCharaRarityFrameImage(int charaId)
     {
         switch (GetCharaRarity(charaId))
         {
             case "0":
-                return "Textures/RarityFrame/CharaFlame_Common";
+                return "Textures/RarityFrame/CharaFrame_Common";
             case "1":
-                return "Textures/RarityFrame/CharaFlame_Rare";
+                return "Textures/RarityFrame/CharaFrame_Rare";
             case "2":
-                return "Textures/RarityFrame/CharaFlame_UltraRare";
+                return "Textures/RarityFrame/CharaFrame_UltraRare";
             default:
                 // charaIdが0、1、2以外の場合のデフォルトの処理をここに追加できます。
                 return "Unknown"; // 例: 不明な場合に "Unknown" を返す
