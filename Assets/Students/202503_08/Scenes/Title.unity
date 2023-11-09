@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 1083048364}
   - component: {fileID: 1083048363}
   - component: {fileID: 1083048365}
+  - component: {fileID: 1083048366}
   m_Layer: 5
   m_Name: NPC
   m_TagString: Untagged
@@ -566,6 +567,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1083048366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083048361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcd7fd4144333744a4ed01aac6cd136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaSourceImage:
+  - {fileID: 21300000, guid: b18c123eb0aa9184aadaec45e1f371bb, type: 3}
+  - {fileID: 21300000, guid: dc712716e6708dc41a339de94dee04c2, type: 3}
+  - {fileID: 21300000, guid: c95639aeba4e37f4f8e0fb94e5bbe3ac, type: 3}
+  - {fileID: 21300000, guid: b60d8803027d98f48bec63cc1fd3cbbb, type: 3}
+  - {fileID: 21300000, guid: 2a964ea07787da244a6eb9c3caf08afb, type: 3}
+  - {fileID: 21300000, guid: 313779d8f01d90f48ba5193d217bf279, type: 3}
+  - {fileID: 21300000, guid: b9dcaf40752d34345bd84031c4b7e5e1, type: 3}
+  - {fileID: 21300000, guid: c7e1337487eaee74b93579cd141b4411, type: 3}
+  - {fileID: 21300000, guid: adccf1ce53326a7469df9f438e270f70, type: 3}
+  - {fileID: 21300000, guid: 95069b9fb5cf5ae408753ea2a4906cf7, type: 3}
+  - {fileID: 21300000, guid: 6480228a3330fc541930f801a56561dc, type: 3}
+  - {fileID: 21300000, guid: 95c7a7ea41f84d046a98cbec6fc348ec, type: 3}
+  - {fileID: 21300000, guid: 1ea10dfd6946e0846a3c3d2bbd14aa0a, type: 3}
+  - {fileID: 21300000, guid: 1851d33af904bc3498bc4e0eb7409a88, type: 3}
 --- !u!1 &1108128345
 GameObject:
   m_ObjectHideFlags: 0
