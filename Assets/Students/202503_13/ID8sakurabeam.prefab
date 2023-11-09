@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3787828791573129263}
   - component: {fileID: 1477154859916304591}
   m_Layer: 0
-  m_Name: Team8Effect
+  m_Name: ID8sakurabeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
