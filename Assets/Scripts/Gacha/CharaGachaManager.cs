@@ -48,6 +48,8 @@ public class CharaGachaManager : MonoBehaviour
     {
         performGacha1.Activate();
         performGacha1.SetSprite(Resources.Load<Sprite>((Application.fixDataManager.GetCharaImagePath(charaId))));
+        performGacha1.SetSpriterarity(Resources.Load<Sprite>((Application.fixDataManager.GetCharaRarityFlameImage(charaId))));
+
         performGacha1.SetName(Application.fixDataManager.GetCharaName(charaId));
     }
 
