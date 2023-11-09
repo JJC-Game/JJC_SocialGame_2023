@@ -1,18 +1,17 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RandomDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public List<Sprite> charaSourceImage = new List<Sprite>();
+    Image charaImage;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        charaImage = gameObject.GetComponent<Image>();
+        int imageNo = Random.Range(0, charaSourceImage.Count);
+        charaImage.sprite = charaSourceImage[imageNo];
     }
 }
