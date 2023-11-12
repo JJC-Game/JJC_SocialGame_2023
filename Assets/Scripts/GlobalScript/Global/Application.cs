@@ -126,4 +126,21 @@ public class Application : MonoBehaviour
         }
         return true;
     }
+
+    private GameObject _appCanvas;
+    static public GameObject appCanvas
+    {
+        get
+        {
+            if (S != null)
+            {
+                if (S._appCanvas == null)
+                {
+                    S._appCanvas = GameObject.Find("AppCanvas"); ;
+                }
+                return S._appCanvas;
+            }
+            return null;
+        }
+    }
 }

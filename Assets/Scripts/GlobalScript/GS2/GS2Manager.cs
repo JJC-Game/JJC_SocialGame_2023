@@ -30,6 +30,12 @@ public class GS2Manager : MonoBehaviour
     const string LOGIN_USERID_KEY = "LoginUserId";
     const string LOGIN_PASSWORD_KEY = "LoginPassword";
 
+    const string FRIEND_NAMESPACE = "PlayerProfile001";
+
+    private Profile profile;
+    Gs2Domain gs2Domain;
+    GameSession gameSession;
+
     string user_id;
     string password;
     bool isCompleteLogin;
@@ -46,13 +52,14 @@ public class GS2Manager : MonoBehaviour
         }
     }
 
-    IEnumerator Start()
+    void Start()
     {
-        Gs2Domain gs2;
-        GameSession gameSession;
-
+        StartCoroutine(InitializeGS2());
+    }
+    IEnumerator InitializeGS2()
+    {
         // Setup general setting
-        var profile = new Profile(
+        profile = new Profile(
             CLIENT_ID,
             CLIENT_SECRET,
             reopener: new Gs2BasicReopener()
@@ -65,8 +72,22 @@ public class GS2Manager : MonoBehaviour
         {
             throw initializeFuture.Error;
         }
-        gs2 = initializeFuture.Result;
+        gs2Domain = initializeFuture.Result;
 
+        StartCoroutine(Login());
+    }
+
+    private IEnumerator FinalizeGs2()
+    {
+        if (profile == null)
+            yield break;
+
+        yield return profile.Finalize();
+    }
+
+    IEnumerator Login()
+    {
+        // 機材のローカル領域にログイン情報が存在するか.
         if (PlayerPrefs.HasKey(LOGIN_USERID_KEY) && PlayerPrefs.HasKey(LOGIN_PASSWORD_KEY))
         {
             user_id = PlayerPrefs.GetString(LOGIN_USERID_KEY);
@@ -95,12 +116,13 @@ public class GS2Manager : MonoBehaviour
 
             gameSession = loginFuture.Result;
         }
-        else{
+        else
+        {
             // Create anonymous account
 
             Debug.Log("Create anonymous account");
 
-            var createFuture = gs2.Account.Namespace(
+            var createFuture = gs2Domain.Account.Namespace(
                 ACCOUNT_NAMESPACE
             ).Create();
             yield return createFuture;
@@ -154,12 +176,12 @@ public class GS2Manager : MonoBehaviour
 
         // Load TakeOver settings
 
-        var it = gs2.Account.Namespace(
+        var it = gs2Domain.Account.Namespace(
             ACCOUNT_NAMESPACE
         ).Me(
             gameSession
         ).TakeOvers();
-    
+
         while (it.HasNext())
         {
             yield return it.Next();
@@ -179,7 +201,26 @@ public class GS2Manager : MonoBehaviour
         Debug.Log("ログイン完了 UserId " + user_id + " Pass " + password);
         isCompleteLogin = true;
 
-        yield return profile.Finalize();
+        StartCoroutine(GetMyProfile());
+
+        //yield return profile.Finalize();
+    }
+
+    IEnumerator GetMyProfile()
+    {
+        var domain = gs2Domain.Friend.Namespace(
+            FRIEND_NAMESPACE
+        ).Me(
+            gameSession
+        ).Profile(
+        );
+        var future = domain.Model();
+        yield return future;
+        Gs2.Unity.Gs2Friend.Model.EzProfile item = future.Result;
+
+        Debug.Log("プロフィール情報取得完了 PublicProfile " + item.PublicProfile);
+
+        Application.appSceneManager.InvokeRefreshUserInfoListener(item.PublicProfile);
     }
 
     void Update()
@@ -198,44 +239,10 @@ public class GS2Manager : MonoBehaviour
     IEnumerator ExecExchange(string exchangeName)
     {
         Debug.Log(exchangeName + "を実施します");
-        // Setup general setting
-        var profile = new Profile(
-            CLIENT_ID,
-            CLIENT_SECRET,
-            reopener: new Gs2BasicReopener()
-        );
-
-        // Create GS2 client
-        var initializeFuture = profile.InitializeFuture();
-        yield return initializeFuture;
-        if (initializeFuture.Error != null)
-        {
-            throw initializeFuture.Error;
-        }
-        var gs2 = initializeFuture.Result;
-
-        // login.
-
-        var loginFuture = profile.LoginFuture(
-            new Gs2AccountAuthenticator(
-                profile.Gs2Session,
-                profile.Gs2RestSession,
-                ACCOUNT_NAMESPACE,
-                ACCOUNT_ANGOU_KEY_ID,
-                user_id,
-                password
-            )
-        );
-        yield return loginFuture;
-        if (loginFuture.Error != null)
-        {
-            throw loginFuture.Error;
-        }
-        var gameSession = loginFuture.Result;
 
         // Exchangeをする.
         {
-            var domain = gs2.Exchange.Namespace(
+            var domain = gs2Domain.Exchange.Namespace(
                 namespaceName: "Exchange002"
             ).Me(
                 gameSession
@@ -259,7 +266,6 @@ public class GS2Manager : MonoBehaviour
         }
 
         Debug.Log(exchangeName + "が完了しました");
-        yield return profile.Finalize();
     }
 
 
@@ -270,44 +276,9 @@ public class GS2Manager : MonoBehaviour
             hasCharaFlag[i] = false;
         }
 
-        // Setup general setting
-        var profile = new Profile(
-            CLIENT_ID,
-            CLIENT_SECRET,
-            reopener: new Gs2BasicReopener()
-        );
-
-        // Create GS2 client
-        var initializeFuture = profile.InitializeFuture();
-        yield return initializeFuture;
-        if (initializeFuture.Error != null)
-        {
-            throw initializeFuture.Error;
-        }
-        var gs2 = initializeFuture.Result;
-
-        // Create anonymous account
-
-        var loginFuture = profile.LoginFuture(
-            new Gs2AccountAuthenticator(
-                profile.Gs2Session,
-                profile.Gs2RestSession,
-                ACCOUNT_NAMESPACE,
-                ACCOUNT_ANGOU_KEY_ID,
-                user_id,
-                password
-            )
-        );
-        yield return loginFuture;
-        if (loginFuture.Error != null)
-        {
-            throw loginFuture.Error;
-        }
-        var gameSession = loginFuture.Result;
-
         // 所持キャラ一覧を取得.
         {
-            var domain_dictionary = gs2.Dictionary.Namespace(
+            var domain_dictionary = gs2Domain.Dictionary.Namespace(
                 namespaceName: "HasCharaDictionary"
             ).Me(
                 gameSession
@@ -348,8 +319,6 @@ public class GS2Manager : MonoBehaviour
         {
             onCompleteFunc();
         }
-
-        yield return profile.Finalize();
     }
 
     public bool IsCompleteLogin()

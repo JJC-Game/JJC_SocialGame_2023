@@ -15,6 +15,8 @@ public class AppSceneManager : MonoBehaviour
     UnityAction scenarioPopOutCallbackFunc;
     public DefineParam.SCENE_ID scenarioPopOutSceneId;
 
+    UnityEvent refreshUserInfo = new UnityEvent();
+
     void Awake(){
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -78,5 +80,21 @@ public class AppSceneManager : MonoBehaviour
             }
         }
         return DefineParam.SCENE_ID.Invalid;
+    }
+
+    public void AddRefreshUserInfoListener(UnityAction action)
+    {
+        refreshUserInfo.AddListener(action);
+    }
+
+    public void InvokeRefreshUserInfoListener(string publicProfile)
+    {
+        Application.userDataManager.RefreshProfile(publicProfile);
+        refreshUserInfo.Invoke();
+    }
+
+    public void RemoveRefreshUserInfoListener(UnityAction action)
+    {
+        refreshUserInfo.RemoveListener(action);
     }
 }
