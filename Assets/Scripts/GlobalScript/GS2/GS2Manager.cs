@@ -18,6 +18,7 @@ using Unity.Properties;
 using Gs2.Core.Domain;
 using Gs2.Gs2Identifier.Model;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 
 public class GS2Manager : MonoBehaviour
 {
@@ -221,6 +222,37 @@ public class GS2Manager : MonoBehaviour
         Debug.Log("プロフィール情報取得完了 PublicProfile " + item.PublicProfile);
 
         Application.appSceneManager.InvokeRefreshUserInfoListener(item.PublicProfile);
+    }
+
+    public IEnumerator UploadMyProfile(string newPublicProfile)
+    {
+        var domain = gs2Domain.Friend.Namespace(
+            FRIEND_NAMESPACE
+        ).Me(
+            gameSession
+        ).Profile(
+        );
+        var future = domain.UpdateProfile(
+            newPublicProfile,
+            "test",
+            "test"
+        );
+        yield return future;
+        if (future.Error != null)
+        {
+            Debug.Log("プロフィール更新失敗");
+            yield break;
+        }
+        var future2 = future.Result.Model();
+        yield return future2;
+        if (future2.Error != null)
+        {
+            Debug.Log("プロフィール更新失敗2");
+            yield break;
+        }
+//        var result = future2.Result;
+
+        Debug.Log("プロフィール更新完了");
     }
 
     void Update()

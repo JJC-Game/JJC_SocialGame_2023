@@ -17,6 +17,7 @@ public class DefineParam : MonoBehaviour
         Talk,
         Gacha,
         Title,
+        System,
         Num,
         Invalid,
     }

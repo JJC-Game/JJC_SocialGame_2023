@@ -21,10 +21,10 @@ public class UserDataManager : MonoBehaviour
 
     public void RefreshProfile(string publicProfile)
     {
-        decodePublicProfile(publicProfile);
+        DecodePublicProfile(publicProfile);
     }
 
-    public void decodePublicProfile(string publicProfile)
+    public void DecodePublicProfile(string publicProfile)
     {
         if (publicProfile == null)
         {
@@ -45,7 +45,14 @@ public class UserDataManager : MonoBehaviour
         }
     }
 
-    public string encodePublicProfile()
+    public void UploadProfile()
+    {
+        string newPublicProfile = EncodePublicProfile();
+
+        StartCoroutine(Application.gs2Manager.UploadMyProfile(newPublicProfile));
+    }
+
+    public string EncodePublicProfile()
     {
         string publicProfile = "";
 
