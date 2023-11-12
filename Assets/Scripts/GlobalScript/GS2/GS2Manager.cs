@@ -276,15 +276,28 @@ public class GS2Manager : MonoBehaviour
             hasCharaFlag[i] = false;
         }
 
+
+        yield return StartCoroutine(ReLogin());
+
+
         // 所持キャラ一覧を取得.
         {
+
             var domain_dictionary = gs2Domain.Dictionary.Namespace(
                 namespaceName: "HasCharaDictionary"
             ).Me(
                 gameSession
-            );
-            var it_Entries = domain_dictionary.Entries(
-            );
+            ).Entries();
+
+            /*
+            var domain_dictionary = gs2Domain.Dictionary.Namespace(
+                namespaceName: "HasCharaDictionary"
+            ).EntryModels();
+            */
+
+            var it_Entries = domain_dictionary;
+
+
             List<EzEntry> items = new List<EzEntry>();
             while (it_Entries.HasNext())
             {
@@ -347,5 +360,45 @@ public class GS2Manager : MonoBehaviour
     public void ClearCharaFlag()
     {
         StartCoroutine(ExecExchange("Exchange002_ClearEntry"));
+    }
+
+    private IEnumerator ReLogin()
+    {
+        /* 再ログイン処理 同じセッションのままではDictionaryのEntryを取り直せない？ */
+        profile.Finalize();
+
+        profile = new Profile(
+            CLIENT_ID,
+            CLIENT_SECRET,
+            reopener: new Gs2BasicReopener()
+        );
+
+        // Create GS2 client
+        var initializeFuture = profile.InitializeFuture();
+        yield return initializeFuture;
+        if (initializeFuture.Error != null)
+        {
+            throw initializeFuture.Error;
+        }
+        gs2Domain = initializeFuture.Result;
+
+        var loginFuture = profile.LoginFuture(
+            new Gs2AccountAuthenticator(
+                profile.Gs2Session,
+                profile.Gs2RestSession,
+                ACCOUNT_NAMESPACE,
+                ACCOUNT_ANGOU_KEY_ID,
+                user_id,
+                password
+            )
+        );
+        yield return loginFuture;
+        if (loginFuture.Error != null)
+        {
+            throw loginFuture.Error;
+        }
+
+        gameSession = loginFuture.Result;
+        /* 再ログイン処理 同じセッションのままではDictionaryのEntryを取り直せない？ ここまで */
     }
 }
