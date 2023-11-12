@@ -16,6 +16,8 @@ public class AppSceneManager : MonoBehaviour
     public DefineParam.SCENE_ID scenarioPopOutSceneId;
 
     void Awake(){
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         currentScenarioId = DefineParam.SCENARIO_INVALID;
         currentCharaId = DefineParam.CHARA_INVALID;
         scenarioPopOutCallbackFunc = ScenarioPopOut;
@@ -58,11 +60,23 @@ public class AppSceneManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        currentSceneId = SceneToSceneId(scene);
     }
 
     public void SetScenarioPopOutSceneId(DefineParam.SCENE_ID inputSceneId)
     {
         scenarioPopOutSceneId = inputSceneId;
+    }
+
+    private DefineParam.SCENE_ID SceneToSceneId(Scene scene)
+    {
+        for (int i = DefineParam.START_SCENE_ID; i < DefineParam.END_SCENE_ID; i++)
+        {
+            if(scene.name == ((DefineParam.SCENE_ID)i).ToString())
+            {
+                return (DefineParam.SCENE_ID)i;
+            }
+        }
+        return DefineParam.SCENE_ID.Invalid;
     }
 }

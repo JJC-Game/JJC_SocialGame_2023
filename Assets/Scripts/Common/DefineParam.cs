@@ -9,9 +9,15 @@ public class DefineParam : MonoBehaviour
     public const int CHARA_MIN_ID  = 1;
     public const int CHARA_MAX_ID = 14;
 
+    public const int START_SCENE_ID = (int)SCENE_ID.Lobby;
+    public const int END_SCENE_ID = (int)SCENE_ID.Num;
+
     public enum SCENE_ID{
-        Lobby,
+        Lobby = 0,
         Talk,
-        Gacha
-    }    
+        Gacha,
+        Title,
+        Num,
+        Invalid,
+    }
 }
