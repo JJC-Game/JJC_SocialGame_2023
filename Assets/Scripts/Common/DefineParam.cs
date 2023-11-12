@@ -18,6 +18,8 @@ public class DefineParam : MonoBehaviour
         Gacha,
         Title,
         System,
+        Battle,
+        Result,
         Num,
         Invalid,
     }

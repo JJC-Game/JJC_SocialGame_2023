@@ -26,7 +26,10 @@ public class TitleManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        Application.appSceneManager.RemoveRefreshUserInfoListener(Refresh);
+        if (Application.appSceneManager != null)
+        {
+            Application.appSceneManager.RemoveRefreshUserInfoListener(Refresh);
+        }
         Destroy(userInfo_instance);
     }
 
