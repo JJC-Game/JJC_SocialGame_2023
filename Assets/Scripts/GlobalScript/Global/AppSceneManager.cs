@@ -17,6 +17,14 @@ public class AppSceneManager : MonoBehaviour
 
     UnityEvent refreshUserInfo = new UnityEvent();
 
+    enum BattleResult
+    {
+        Win,
+        Lose
+    }
+
+    BattleResult battleResult;
+
     void Awake(){
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -96,5 +104,25 @@ public class AppSceneManager : MonoBehaviour
     public void RemoveRefreshUserInfoListener(UnityAction action)
     {
         refreshUserInfo.RemoveListener(action);
+    }
+
+    public void BattleWin()
+    {
+        battleResult = BattleResult.Win;
+        ChangeScene(DefineParam.SCENE_ID.Result);
+    }
+    public void BattleLose()
+    {
+        battleResult = BattleResult.Lose;
+        ChangeScene(DefineParam.SCENE_ID.Result);
+    }
+
+    public bool IsBattleWin()
+    {
+        return battleResult == BattleResult.Win;
+    }
+    public bool IsBattleLose()
+    {
+        return battleResult == BattleResult.Lose;
     }
 }
