@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using static FixData_CharaFixData;
 
-public class FixData_SkillFixData : MonoBehaviour
+public class FixData_SkillFixData
 {
     public void Load()
     {
@@ -73,6 +73,11 @@ public class FixData_SkillFixData : MonoBehaviour
         public int targetType;
         public int skillDamagePer;
         public int cooldown;
+
+        public float GetCooldownSec()
+        {
+            return (float)cooldown / 1000.0f;
+        }
     }
 
     List<SkillFixData> m_fixDataList;

@@ -28,6 +28,15 @@ public class FixDataManager : MonoBehaviour
         
     }
 
+    public FixData_CharaFixData.CharaFixData GetCharaFixData(int charaId)
+    {
+        return fixData_charaFixData.GetFixData(charaId);
+    }
+    public FixData_SkillFixData.SkillFixData GetSkillFixData(int skillId)
+    {
+        return fixData_skillFixData.GetFixData(skillId);
+    }
+
     public string GetCharaName(int charaId){
         return inGameText_charaName.GetCharaName(charaId);
     }

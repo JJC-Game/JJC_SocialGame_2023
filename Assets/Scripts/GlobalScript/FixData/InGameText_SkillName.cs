@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class InGameText_SkillName : MonoBehaviour
+public class InGameText_SkillName
 {
     public void Load()
     {
