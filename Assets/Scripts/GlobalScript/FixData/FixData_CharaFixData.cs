@@ -30,6 +30,8 @@ public class FixData_CharaFixData
                 currentRow.physicsDef = int.Parse(lineArray[5]);
                 currentRow.magicAtk = int.Parse(lineArray[6]);
                 currentRow.magicDef = int.Parse(lineArray[7]);
+                currentRow.skill1Id = int.Parse(lineArray[8]);
+                currentRow.skill2Id = int.Parse(lineArray[9]);
 
                 m_fixDataList.Add(currentRow);
             }
@@ -74,6 +76,8 @@ public class FixData_CharaFixData
         public int physicsDef;
         public int magicAtk;
         public int magicDef;
+        public int skill1Id;
+        public int skill2Id;
     }
 
     List<CharaFixData> m_fixDataList;

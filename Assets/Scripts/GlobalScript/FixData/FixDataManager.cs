@@ -8,12 +8,18 @@ public class FixDataManager : MonoBehaviour
     void Awake()
     {
         fixData_charaFixData = new FixData_CharaFixData();
-        fixData_charaFixData.Load();              
+        fixData_charaFixData.Load();
+        fixData_skillFixData = new FixData_SkillFixData();
+        fixData_skillFixData.Load(); 
         inGameText_charaName = new InGameText_CharaName();
         inGameText_charaName.Load();
+        inGameText_skillName = new InGameText_SkillName();
+        inGameText_skillName.Load();
 
         Debug.Log("CharaName 1 -> " + GetCharaName(1));
         Debug.Log("CharaImagePath 1 -> " + GetCharaImagePath(1));
+        Debug.Log("SkillName 1 -> " + GetSkillName(1));
+        Debug.Log("SkillEffectPath 1 -> " + GetSkillEffectPath(1));
     }
 
     // Update is called once per frame
@@ -50,6 +56,18 @@ public class FixDataManager : MonoBehaviour
         }
     }
 
+    public string GetSkillName(int skillId)
+    {
+        return inGameText_skillName.GetName(skillId);
+    }
+
+    public string GetSkillEffectPath(int skillId)
+    {
+        return fixData_skillFixData.GetFixData(skillId).effectPath;
+    }
+
     FixData_CharaFixData fixData_charaFixData;
+    FixData_SkillFixData fixData_skillFixData;
     InGameText_CharaName inGameText_charaName;
+    InGameText_SkillName inGameText_skillName;
 }
