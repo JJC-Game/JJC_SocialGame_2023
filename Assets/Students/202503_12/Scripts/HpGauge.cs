@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HPgage : MonoBehaviour
+public class HpGauge : MonoBehaviour
 {
     Slider S;
-   public GameObject Oya;
+   public GameObject characterObjects;
     BattleActor hp;
-    public float damageSpeed = 10f;
-    public Image fillImage;
     // Start is called before the first frame update
     void Start()
     {
         S = this.gameObject.GetComponent<Slider>();
         // 親のスクリプトを取得
-        hp = Oya.GetComponent<BattleActor>();
+        hp = characterObjects.GetComponent<BattleActor>();
     }
 
     void Update()

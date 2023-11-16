@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class DamageController : MonoBehaviour
 {
-    public Slider S;  // ゲージ
+     Slider S;  // ゲージ
     BattleActor hp;            // HP スクリプトへの参照
-   public GameObject Oya;      //HP　スクリプトのオブジェクト
-    public float damageDuration = 1f;  // ダメージが徐々に減少する期間
-    public bool isRunning = false;
+   public GameObject characterObjects;      //HP　スクリプトのオブジェクト
+     float damageDuration = 1f;  // ダメージが徐々に減少する期間
+     bool isRunning = false;
     float startValue;
     float targetValue;
     
     void Start()
     {
-        hp = Oya.GetComponent<BattleActor>();
-
+        S = this.gameObject.GetComponent<Slider>();
+        hp = characterObjects.GetComponent<BattleActor>();
     }
 
     void Update()
