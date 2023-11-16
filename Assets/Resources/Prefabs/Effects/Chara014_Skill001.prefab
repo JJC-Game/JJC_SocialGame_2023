@@ -4840,7 +4840,7 @@ GameObject:
   - component: {fileID: 8586982150313139343}
   - component: {fileID: 788666236042818543}
   m_Layer: 0
-  m_Name: ID14
+  m_Name: Chara014_Skill001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
