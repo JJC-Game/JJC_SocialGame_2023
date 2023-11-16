@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7583433376383597116}
   - component: {fileID: 1251589687690420472}
   m_Layer: 0
-  m_Name: Jo_Myo_dangan
+  m_Name: Chara005_Skill001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
