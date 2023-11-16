@@ -23,6 +23,7 @@ public class BattleActor : MonoBehaviour
 
     VariableParam hp;
     public int currentHp;
+    public int damageHp;
 
     public enum TeamId
     {
@@ -55,8 +56,24 @@ public class BattleActor : MonoBehaviour
         hp.SetFullValue();
 
         teamId = inputTeamId;
+
+
+      
+       
     }
 
+    public float GetHPRate()
+    {
+        return hp.GetRate();
+    }
+    public float GetMaxHP()
+    {
+        return hp.GetMaxValue();
+    }
+    public float GetNowHp()
+    {
+        return hp.GetNowValue();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -97,6 +114,7 @@ public class BattleActor : MonoBehaviour
     public void TakeDamage(FixData_CharaFixData.CharaFixData attackerCharaFixData, FixData_SkillFixData.SkillFixData attackerSkillFixData)
     {
         int damage = (int)(attackerCharaFixData.physicsAtk * (attackerSkillFixData.skillDamagePer / 100.0f));
+        damageHp = damage;
         hp.AddNowValue(-damage);
 
         if (hp.IsEmpty())
