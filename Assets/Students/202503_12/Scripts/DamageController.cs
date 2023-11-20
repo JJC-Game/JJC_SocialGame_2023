@@ -11,7 +11,9 @@ public class DamageController : MonoBehaviour
      bool isRunning = false;
     float startValue;
     float targetValue;
-    
+    bool des=false;
+    int hpNow;
+    int hpMae;
     void Start()
     {
         S = this.gameObject.GetComponent<Slider>();
@@ -22,10 +24,11 @@ public class DamageController : MonoBehaviour
     {
         S.maxValue = hp.GetMaxHP();
         
-        if (S.value != hp.currentHp)
+        if (S.value != hp.currentHp&&des==false)
         {
             StartCoroutine(TakeDamage());
             targetValue = hp.GetNowHp();
+            hpNow = hp.currentHp;
         }
     }
 
@@ -33,10 +36,20 @@ public class DamageController : MonoBehaviour
     {
         if (isRunning)
             yield break;
-        startValue = hp.GetNowHp() + hp.damageHp;
-        
+        startValue = hpNow + hp.damageHp;
         float currentTime = 0f;
         isRunning = true;
+        if (hp.currentHp <= 0)
+        {
+            startValue = hpNow;
+            des = true;
+           
+        }
+
+        if(hpMae<= startValue)
+        {
+            startValue = hpMae;
+        }
         while (currentTime < damageDuration)
         {
             float lerpedValue = Mathf.Lerp(startValue, targetValue, currentTime / damageDuration);
@@ -53,5 +66,7 @@ public class DamageController : MonoBehaviour
             yield return null;
         }
         isRunning = false;
+        hpMae = hp.currentHp;
+       
     }
 }

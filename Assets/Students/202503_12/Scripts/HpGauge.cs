@@ -23,7 +23,7 @@ public class HpGauge : MonoBehaviour
         {
             TakeDamage();
         }
-        Debug.Log(hp.currentHp);
+       // Debug.Log(hp.currentHp);
     }
     void TakeDamage()
     {
