@@ -6,24 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Title.unity
+    path: Assets/Scripts/Scenes/Title.unity
     guid: f0408f3f77f9b764fb849c9b6a7f7f1e
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
+    path: Assets/Scripts/Scenes/Lobby.unity
     guid: d23777aa3e3e286478c20e74e1855d29
   - enabled: 1
-    path: Assets/Scenes/Talk.unity
+    path: Assets/Scripts/Scenes/Talk.unity
     guid: 3aaf9d66e06053d4ba2c175005282aec
   - enabled: 1
-    path: Assets/Scenes/Gacha.unity
+    path: Assets/Scripts/Scenes/Gacha.unity
     guid: d713295056a3a3248938405237ad278b
   - enabled: 1
-    path: Assets/Scenes/System.unity
+    path: Assets/Scripts/Scenes/System.unity
     guid: 19da0fec5d696c24bae48d0f8edc48cf
   - enabled: 1
-    path: Assets/Scenes/Battle.unity
+    path: Assets/Scripts/Scenes/Battle.unity
     guid: b7300043fbb67814286b9d0039fe13ba
   - enabled: 1
-    path: Assets/Scenes/Result.unity
+    path: Assets/Scripts/Scenes/Result.unity
     guid: 6587b0b3575063f4eb308586fc053133
   m_configObjects: {}
