@@ -19,6 +19,11 @@ using Gs2.Core.Domain;
 using Gs2.Gs2Identifier.Model;
 using UnityEngine.Events;
 using static UnityEditor.Progress;
+using Gs2.Unity.Gs2Formation.Model;
+using Gs2.Gs2Formation.Model;
+using Gs2.Gs2Formation.Request;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using Unity.VisualScripting;
 
 public class GS2Manager : MonoBehaviour
 {
@@ -33,15 +38,57 @@ public class GS2Manager : MonoBehaviour
 
     const string FRIEND_NAMESPACE = "PlayerProfile001";
 
+    const string FRIEND_NAMESPACE_FORMATION = "PlayerFormation";
+
     private Profile profile;
     Gs2Domain gs2Domain;
     GameSession gameSession;
 
     string user_id;
     string password;
-    bool isCompleteLogin;
 
     bool[] hasCharaFlag;
+
+
+    // 接続状況の管理.
+    bool isCompleteLogin;
+    bool isConnecting;
+    GameObject loginFadeInstance = null;
+
+    // 接続を開始する. 他の接続は行えないようにする.
+    private bool StartConnect()
+    {
+        if (IsConnecting())
+        {
+            Debug.Log("現在接続中");
+            return false;
+        }
+        isConnecting = true;
+        return true;
+    }
+
+    // 接続を完了する.他の接続を行ってよくなる.
+    private void CompleteConnect()
+    {
+        isConnecting = false;
+    }
+
+    // 現在接続中.
+    private bool IsConnecting()
+    {
+        return isConnecting;
+    }
+
+    // ログイン処理が終わっている.
+    private bool IsCompleteLogin()
+    {
+        return isCompleteLogin;
+    }
+
+    public bool IsEnableUIControl()
+    {
+        return !IsConnecting() && IsCompleteLogin();
+    }
 
     private void Awake()
     {
@@ -83,11 +130,20 @@ public class GS2Manager : MonoBehaviour
         if (profile == null)
             yield break;
 
+        isCompleteLogin = false;
+        isConnecting = false;
         yield return profile.Finalize();
     }
 
     IEnumerator Login()
     {
+        // ログインを示すUIを表示.
+        GameObject loginFadePrefab = Resources.Load<GameObject>("Prefabs/Title/LoginFade");
+        loginFadeInstance = Instantiate(loginFadePrefab);
+        loginFadeInstance.transform.SetParent(Application.appCanvas.transform);
+        RectTransform rectTrans = loginFadeInstance.transform as RectTransform;
+        rectTrans.anchoredPosition = Vector2.zero;
+
         // 機材のローカル領域にログイン情報が存在するか.
         if (PlayerPrefs.HasKey(LOGIN_USERID_KEY) && PlayerPrefs.HasKey(LOGIN_PASSWORD_KEY))
         {
@@ -198,17 +254,9 @@ public class GS2Manager : MonoBehaviour
             }
         }
 
-        // Finalize GS2-SDK
         Debug.Log("ログイン完了 UserId " + user_id + " Pass " + password);
-        isCompleteLogin = true;
 
-        StartCoroutine(GetMyProfile());
-
-        //yield return profile.Finalize();
-    }
-
-    IEnumerator GetMyProfile()
-    {
+        // ユーザー名を取得しておく.
         var domain = gs2Domain.Friend.Namespace(
             FRIEND_NAMESPACE
         ).Me(
@@ -222,10 +270,36 @@ public class GS2Manager : MonoBehaviour
         Debug.Log("プロフィール情報取得完了 PublicProfile " + item.PublicProfile);
 
         Application.appSceneManager.InvokeRefreshUserInfoListener(item.PublicProfile);
+
+        isCompleteLogin = true;
+        Destroy(loginFadeInstance);
+    }
+
+    IEnumerator GetMyProfile()
+    {
+        Debug.Assert(StartConnect());
+
+        var domain = gs2Domain.Friend.Namespace(
+            FRIEND_NAMESPACE
+        ).Me(
+            gameSession
+        ).Profile(
+        );
+        var future = domain.Model();
+        yield return future;
+        Gs2.Unity.Gs2Friend.Model.EzProfile item = future.Result;
+
+        Debug.Log("プロフィール情報取得完了 PublicProfile " + item.PublicProfile);
+
+        Application.appSceneManager.InvokeRefreshUserInfoListener(item.PublicProfile);
+
+        CompleteConnect();
     }
 
     public IEnumerator UploadMyProfile(string newPublicProfile)
     {
+        Debug.Assert(StartConnect());
+
         var domain = gs2Domain.Friend.Namespace(
             FRIEND_NAMESPACE
         ).Me(
@@ -253,6 +327,8 @@ public class GS2Manager : MonoBehaviour
 //        var result = future2.Result;
 
         Debug.Log("プロフィール更新完了");
+
+        CompleteConnect();
     }
 
     void Update()
@@ -270,6 +346,7 @@ public class GS2Manager : MonoBehaviour
 
     IEnumerator ExecExchange(string exchangeName)
     {
+        Debug.Assert(StartConnect());
         Debug.Log(exchangeName + "を実施します");
 
         // Exchangeをする.
@@ -298,11 +375,13 @@ public class GS2Manager : MonoBehaviour
         }
 
         Debug.Log(exchangeName + "が完了しました");
+        CompleteConnect();
     }
 
 
     public IEnumerator RefreshList(UnityAction onCompleteFunc)
     {
+        Debug.Assert(StartConnect());
         for (int i = 0; i < DefineParam.CHARA_MAX_ID + 1; i++)
         {
             hasCharaFlag[i] = false;
@@ -364,11 +443,8 @@ public class GS2Manager : MonoBehaviour
         {
             onCompleteFunc();
         }
-    }
 
-    public bool IsCompleteLogin()
-    {
-        return isCompleteLogin;
+        CompleteConnect();
     }
 
     public bool HasChara(int charaId)
@@ -432,5 +508,207 @@ public class GS2Manager : MonoBehaviour
 
         gameSession = loginFuture.Result;
         /* 再ログイン処理 同じセッションのままではDictionaryのEntryを取り直せない？ ここまで */
+    }
+
+    public IEnumerator GetForm(int formIndex)
+    {
+        if (gs2Domain == null)
+        {
+            Debug.Assert(false, "gs2 null");
+        }
+        if (gameSession == null)
+        {
+            Debug.Assert(false, "gameSession null");
+        }
+
+        var domain_formation_mold_form = gs2Domain.Formation.Namespace(
+            "Formation001"
+        ).Me(
+            gameSession
+        ).Mold(
+            "Mold001"
+        ).Form(
+            formIndex
+        );
+
+        var future = domain_formation_mold_form.Model();
+        yield return future;
+        EzForm form = future.Result;
+
+        List<EzSlot> slotList = form.Slots;
+
+        Debug.Log("CompleteGetForm");
+        for (int i = 0; i < slotList.Count; i++)
+        {
+            EzSlot slot = slotList[i];
+            Debug.Log("slotName " + slot.Name + ", slotPropertyId " + slot.PropertyId);
+        }
+    }
+
+    public IEnumerator SetForm(int formIndex, int slot1_charaId, int slot2_charaId, int slot3_charaId)
+    {
+        if ( gs2Domain == null )
+        {
+            Debug.Assert(false, "gs2 null");
+        }
+        if (  gameSession == null)
+        {
+            Debug.Assert(false, "gameSession null");
+        }
+
+        // 署名を得る.
+        var domain_dictionary = gs2Domain.Dictionary.Namespace(
+            "HasCharaDictionary"
+        ).Me(
+            gameSession
+        ).Entry(
+            "Chara001"
+        );
+
+        var future_dic_chara001 = domain_dictionary.GetEntryWithSignature(
+            ACCOUNT_ANGOU_KEY_ID
+        );
+        yield return future_dic_chara001;
+        if (future_dic_chara001.Error != null)
+        {
+            Debug.Assert(false, "GetEntryWithSignature Future " + future_dic_chara001.Error.Message);
+            yield break;
+        }
+        var result_dic_chara001 = future_dic_chara001.Result;
+        var body_dic_chara001 = future_dic_chara001.Result.Body;
+        var signature_dic_chara001 = future_dic_chara001.Result.Signature;
+
+        // SetFormを始める.
+        var domain_formation_mold_form = gs2Domain.Formation.Namespace(
+            "Formation001"
+        ).Me(
+            gameSession
+        ).Mold(
+            "Mold001"
+        ).Form(
+            0
+        );
+
+        Gs2.Unity.Gs2Formation.Model.EzSlotWithSignature[] slotArray;
+        slotArray = new Gs2.Unity.Gs2Formation.Model.EzSlotWithSignature[3];
+        slotArray[0] = new Gs2.Unity.Gs2Formation.Model.EzSlotWithSignature();
+        slotArray[0].Name = "Position001";
+        slotArray[0].PropertyType = "gs2_dictionary";
+        slotArray[0].Body = "body";
+        slotArray[0].Signature = "signature";
+
+        slotArray[1] = new Gs2.Unity.Gs2Formation.Model.EzSlotWithSignature();
+        slotArray[1].Name = "Position002";
+        slotArray[1].PropertyType = "gs2_dictionary";
+        slotArray[1].Body = "body";
+        slotArray[1].Signature = "signature";
+
+        slotArray[2] = new Gs2.Unity.Gs2Formation.Model.EzSlotWithSignature();
+        slotArray[2].Name = "Position003";
+        slotArray[2].PropertyType = "gs2_dictionary";
+        slotArray[2].Body = "body";
+        slotArray[2].Signature = "signature";
+
+
+        var future_SetForm = domain_formation_mold_form.SetForm(
+            slotArray,
+            ACCOUNT_ANGOU_KEY_ID
+        );
+        yield return future_SetForm;
+        if (future_SetForm.Error != null)
+        {
+            Debug.Assert(false, "SetForm Future " + future_SetForm.Error.Message);
+            yield break;
+        }
+        var future2 = future_SetForm.Result.Model();
+        yield return future2;
+        if (future2.Error != null)
+        {
+            Debug.Assert(false, "SetForm Future2 " + future2.Error.Message);
+            yield break;
+        }
+        var result = future2.Result;
+
+
+        List<EzSlot> slotList = result.Slots;
+
+        Debug.Log("CompleteSetForm");
+        for (int i = 0; i < slotList.Count; i++)
+        {
+            EzSlot slot = slotList[i];
+            Debug.Log("slotName " + slot.Name + ", slotPropertyId " + slot.PropertyId);
+        }
+    }
+
+
+    public IEnumerator GetPlayerFormation()
+    {
+        Debug.Assert(StartConnect());
+        var domain = gs2Domain.Friend.Namespace(
+            FRIEND_NAMESPACE_FORMATION
+        ).Me(
+            gameSession
+        ).Profile(
+        );
+        var future = domain.Model();
+        yield return future;
+        Gs2.Unity.Gs2Friend.Model.EzProfile profile_formation = future.Result;
+
+        Debug.Log("編成情報を取得 PublicProfile " + profile_formation.PublicProfile);
+
+        if (profile_formation.PublicProfile == null)
+        {
+            
+        }
+        else
+        {
+            string[] strKeyValue = profile_formation.PublicProfile.Split(":");
+            if (strKeyValue.Length == 2)
+            {
+                string[] strFormationSlotArray = strKeyValue[1].Split(",");
+                for (int i = 0; i < UserDataManager.FORMATION_NUM; i++)
+                {
+                    string slot = strFormationSlotArray[i];
+                    Debug.Log("charaId " + slot);
+                }
+            }
+        }
+        CompleteConnect();
+    }
+
+    public IEnumerator SetPlayerFormation(UserDataManager.Formation formation)
+    {
+        Debug.Assert(StartConnect());
+        string strSerializedFormation = "formation001:" + formation.GetCharaId(0).ToString() + "," + formation.GetCharaId(1).ToString() + "," + formation.GetCharaId(2).ToString();
+
+
+        var domain = gs2Domain.Friend.Namespace(
+            FRIEND_NAMESPACE_FORMATION
+        ).Me(
+            gameSession
+        ).Profile(
+        );
+        var future = domain.UpdateProfile(
+            strSerializedFormation,
+            "test",
+            "test"
+        );
+        yield return future;
+        if (future.Error != null)
+        {
+            Debug.Log("編成情報更新失敗");
+            yield break;
+        }
+        var future2 = future.Result.Model();
+        yield return future2;
+        if (future2.Error != null)
+        {
+            Debug.Log("編成情報更新失敗2");
+            yield break;
+        }
+        //        var result = future2.Result;
+
+        Debug.Log("編成情報更新完了");
+        CompleteConnect();
     }
 }
