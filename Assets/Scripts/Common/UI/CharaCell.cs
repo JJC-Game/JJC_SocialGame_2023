@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharaCell : MonoBehaviour
+public class CharaCell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     void Awake(){
         nameText = this.transform.Find("CharaName").GetComponent<Text>();
@@ -15,6 +16,8 @@ public class CharaCell : MonoBehaviour
 
         Font font = Resources.Load<Font>("Fonts/keifont");
         nameText.font = font;
+
+        isPointing = false;
     }
 
     public void RefreshCharaImage(int charaId, bool isNotHave){
@@ -40,8 +43,31 @@ public class CharaCell : MonoBehaviour
         check.enabled = isEnable;
     }
 
+    public bool IsCheckEnable()
+    {
+        return check.enabled;
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        Debug.Log("in");
+        isPointing = true;
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        Debug.Log("out");
+        isPointing = false;
+    }
+
+    public bool IsPointing()
+    {
+        return isPointing;
+    }
+
     Text nameText;
     Image charaImage;
     Image notHasCover;
     Image check;
+    bool isPointing;
 }

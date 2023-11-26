@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharaGridRenderer : MonoBehaviour
 {
-    const int GRID_NUM = 33;
     void Awake()
     {
         mouseHold = false;
@@ -41,13 +40,13 @@ public class CharaGridRenderer : MonoBehaviour
         }
     }
 
-    public void OnMouseButtonDown()
+    public virtual void OnMouseButtonDown()
     {
         mouseHold = true;
         holdStartMousePosition = Input.mousePosition;
     }
 
-    public void OnMouseButtonUp()
+    public virtual void OnMouseButtonUp()
     {
         mouseHold = false;
 
@@ -80,10 +79,11 @@ public class CharaGridRenderer : MonoBehaviour
     }
 
     bool mouseHold;
-    Vector2 holdStartMousePosition;
+    protected Vector2 holdStartMousePosition;
     Vector2 currentGridPosition;
     RectTransform gridMenuRectTrans;
 
+    protected const int GRID_NUM = 33;
     const int CELL_SIZE = 100;
 
     const int MIN_Y_POSITION = -400;
