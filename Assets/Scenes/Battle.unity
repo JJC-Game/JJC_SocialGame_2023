@@ -274,6 +274,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1312682593}
     m_Modifications:
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -608,6 +616,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 153eba2a1d904254b9b325a9327a4b35, type: 3}
+--- !u!223 &870390745 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6949170344427703735, guid: 153eba2a1d904254b9b325a9327a4b35, type: 3}
+  m_PrefabInstance: {fileID: 870390744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &934298671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -616,6 +629,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1312682593}
     m_Modifications:
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -750,6 +771,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1b935a17859e94f4396fee5ce6080059, type: 3}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -811,6 +840,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1b935a17859e94f4396fee5ce6080059, type: 3}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -872,6 +909,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1b935a17859e94f4396fee5ce6080059, type: 3}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1041,6 +1086,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1312682593}
     m_Modifications:
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 870390745}
+    - target: {fileID: 582674726754456658, guid: 174900670c21c184c860ba600dc35a24, type: 3}
+      propertyPath: damageImage
+      value: 
+      objectReference: {fileID: 2565066009612086625, guid: b8027b691beae654ea8afae658c92cc5, type: 3}
     - target: {fileID: 4774164397209321604, guid: 174900670c21c184c860ba600dc35a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5

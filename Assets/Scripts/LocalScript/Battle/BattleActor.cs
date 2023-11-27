@@ -26,10 +26,11 @@ public class BattleActor : MonoBehaviour
     public int currentHp;
     public int damageHp;
 
-    [SerializeField] GameObject damageImage;
+    GameObject damageImagePrefab;
+    GameObject healImagePrefab;
+
     TextMeshProUGUI damageText;
     Vector2 targetPos;
-    [SerializeField] Canvas canvas;
 
     public enum TeamId
     {
@@ -63,8 +64,8 @@ public class BattleActor : MonoBehaviour
 
         teamId = inputTeamId;
 
-
-
+        damageImagePrefab = Resources.Load<GameObject>("Prefabs/Battle/DamageImage");
+        healImagePrefab = Resources.Load<GameObject>("Prefabs/Battle/HealImage");
 
     }
 
@@ -92,26 +93,34 @@ public class BattleActor : MonoBehaviour
         if (skill1Timer <= 0.0f)
         {
             GameObject effectPrefab = Resources.Load<GameObject>(skill1FixData.effectPath);
-            GameObject effectInstance = Instantiate(effectPrefab);
-            effectInstance.transform.SetParent(this.transform);
-            effectInstance.transform.localPosition = Vector3.zero;
+            if(effectPrefab == null){
+                Debug.Assert(false, "CharaName" + Application.fixDataManager.GetCharaName(charaId) + "のSkill1のエフェクトを読もうとして失敗しました" + skill1FixData.effectPath);
+            }else{
+                GameObject effectInstance = Instantiate(effectPrefab);
+                effectInstance.transform.SetParent(this.transform);
+                effectInstance.transform.localPosition = Vector3.zero;
 
-            skill1Timer = skill1FixData.GetCooldownSec();
+                skill1Timer = skill1FixData.GetCooldownSec();
 
-            GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill1FixData);
+                GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill1FixData);
+            }
         }
 
         skill2Timer -= Time.deltaTime;
         if (skill2Timer <= 0.0f)
         {
             GameObject effectPrefab = Resources.Load<GameObject>(skill2FixData.effectPath);
-            GameObject effectInstance = Instantiate(effectPrefab);
-            effectInstance.transform.SetParent(this.transform);
-            effectInstance.transform.localPosition = Vector3.zero;
+            if(effectPrefab == null){
+                Debug.Assert(false, "CharaName" + Application.fixDataManager.GetCharaName(charaId) + "のSkill2のエフェクトを読もうとして失敗しました" + skill1FixData.effectPath);
+            }else{
+                GameObject effectInstance = Instantiate(effectPrefab);
+                effectInstance.transform.SetParent(this.transform);
+                effectInstance.transform.localPosition = Vector3.zero;
 
-            skill2Timer = skill2FixData.GetCooldownSec();
+                skill2Timer = skill2FixData.GetCooldownSec();
 
-            GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill2FixData);
+                GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill2FixData);
+            }
         }
 
         currentHp = hp.GetNowValue();
@@ -122,11 +131,11 @@ public class BattleActor : MonoBehaviour
         int damage = (int)((attackerCharaFixData.physicsAtk / 2 - attackerCharaFixData.physicsDef / 4) * 10f * (attackerSkillFixData.skillDamagePer / 100.0f));
 
         Vector2 pos = new Vector2(targetPos.x, targetPos.y);
-        GameObject damagePrefab = Instantiate(damageImage, pos, Quaternion.identity, canvas.transform);
+        GameObject damageInstance = Instantiate(damageImagePrefab, pos, Quaternion.identity, Application.appCanvas.transform);
 
         damageText = GameObject.Find("DamageText").GetComponent<TextMeshProUGUI>();
         damageText.text = damage.ToString();
-        Destroy(damagePrefab, 1f);
+        Destroy(damageInstance, 1f);
 
         damageHp = damage;
         hp.AddNowValue(-damage);
