@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BattleActor : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class BattleActor : MonoBehaviour
     VariableParam hp;
     public int currentHp;
     public int damageHp;
+
+    [SerializeField] GameObject damageImage;
+    TextMeshProUGUI damageText;
+    Vector2 targetPos;
+    [SerializeField] Canvas canvas;
 
     public enum TeamId
     {
@@ -58,8 +64,8 @@ public class BattleActor : MonoBehaviour
         teamId = inputTeamId;
 
 
-      
-       
+
+
     }
 
     public float GetHPRate()
@@ -113,7 +119,15 @@ public class BattleActor : MonoBehaviour
 
     public void TakeDamage(FixData_CharaFixData.CharaFixData attackerCharaFixData, FixData_SkillFixData.SkillFixData attackerSkillFixData)
     {
-        int damage = (int)(attackerCharaFixData.physicsAtk * (attackerSkillFixData.skillDamagePer / 100.0f));
+        int damage = (int)((attackerCharaFixData.physicsAtk / 2 - attackerCharaFixData.physicsDef / 4) * 10f * (attackerSkillFixData.skillDamagePer / 100.0f));
+
+        Vector2 pos = new Vector2(targetPos.x, targetPos.y);
+        GameObject damagePrefab = Instantiate(damageImage, pos, Quaternion.identity, canvas.transform);
+
+        damageText = GameObject.Find("DamageText").GetComponent<TextMeshProUGUI>();
+        damageText.text = damage.ToString();
+        Destroy(damagePrefab, 1f);
+
         damageHp = damage;
         hp.AddNowValue(-damage);
 
