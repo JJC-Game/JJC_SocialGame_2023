@@ -30,6 +30,10 @@ public class DamageController : MonoBehaviour
             targetValue = hp.GetNowHp();
             hpNow = hp.currentHp;
         }
+        if (hp.currentHp <= 0)
+        {
+            S.value = 0;
+        }
     }
 
     IEnumerator TakeDamage()
