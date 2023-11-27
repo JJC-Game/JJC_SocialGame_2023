@@ -46,6 +46,11 @@ public class CharaGachaManager : MonoBehaviour
 
     public void DrawPerform(int charaId)
     {
+        GameObject soundManager = GameObject.Find("SoundManager");
+        if (soundManager != null)
+        {
+            //soundManager.GetComponent<SoundManager>().SE_Play(3);
+        }
         performGacha1.Activate();
         performGacha1.SetSprite(Resources.Load<Sprite>((Application.fixDataManager.GetCharaImagePath(charaId))));
         performGacha1.SetSpriterarity(Resources.Load<Sprite>((Application.fixDataManager.GetCharaRarityFrameImage(charaId))));
