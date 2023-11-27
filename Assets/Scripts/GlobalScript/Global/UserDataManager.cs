@@ -12,7 +12,7 @@ public class UserDataManager : MonoBehaviour
 
     public class Formation
     {
-        public int[] charaIdArray;
+        int[] charaIdArray;
 
         public void Init()
         {
