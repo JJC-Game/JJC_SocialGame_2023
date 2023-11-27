@@ -93,26 +93,34 @@ public class BattleActor : MonoBehaviour
         if (skill1Timer <= 0.0f)
         {
             GameObject effectPrefab = Resources.Load<GameObject>(skill1FixData.effectPath);
-            GameObject effectInstance = Instantiate(effectPrefab);
-            effectInstance.transform.SetParent(this.transform);
-            effectInstance.transform.localPosition = Vector3.zero;
+            if(effectPrefab == null){
+                Debug.Assert(false, "CharaName" + Application.fixDataManager.GetCharaName(charaId) + "のSkill1のエフェクトを読もうとして失敗しました" + skill1FixData.effectPath);
+            }else{
+                GameObject effectInstance = Instantiate(effectPrefab);
+                effectInstance.transform.SetParent(this.transform);
+                effectInstance.transform.localPosition = Vector3.zero;
 
-            skill1Timer = skill1FixData.GetCooldownSec();
+                skill1Timer = skill1FixData.GetCooldownSec();
 
-            GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill1FixData);
+                GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill1FixData);
+            }
         }
 
         skill2Timer -= Time.deltaTime;
         if (skill2Timer <= 0.0f)
         {
             GameObject effectPrefab = Resources.Load<GameObject>(skill2FixData.effectPath);
-            GameObject effectInstance = Instantiate(effectPrefab);
-            effectInstance.transform.SetParent(this.transform);
-            effectInstance.transform.localPosition = Vector3.zero;
+            if(effectPrefab == null){
+                Debug.Assert(false, "CharaName" + Application.fixDataManager.GetCharaName(charaId) + "のSkill2のエフェクトを読もうとして失敗しました" + skill1FixData.effectPath);
+            }else{
+                GameObject effectInstance = Instantiate(effectPrefab);
+                effectInstance.transform.SetParent(this.transform);
+                effectInstance.transform.localPosition = Vector3.zero;
 
-            skill2Timer = skill2FixData.GetCooldownSec();
+                skill2Timer = skill2FixData.GetCooldownSec();
 
-            GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill2FixData);
+                GameObject.Find("BattleManager").GetComponent<BattleManager>().Attack(this, charaFixData, skill2FixData);
+            }
         }
 
         currentHp = hp.GetNowValue();
