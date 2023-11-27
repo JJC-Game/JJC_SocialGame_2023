@@ -120,7 +120,7 @@ public class Application : MonoBehaviour
 
     static public bool IsEnableUIControl()
     {
-        if (FadeManager.IsFading() || !gs2Manager.IsCompleteLogin())
+        if (FadeManager.IsFading() || !gs2Manager.IsEnableUIControl())
         {
             return false;
         }

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scripts/Scenes/Result.unity
     guid: 6587b0b3575063f4eb308586fc053133
+  - enabled: 1
+    path: Assets/Scripts/Scenes/Formation.unity
+    guid: 4c77587e583008c4db33c850d8350aa7
   m_configObjects: {}
