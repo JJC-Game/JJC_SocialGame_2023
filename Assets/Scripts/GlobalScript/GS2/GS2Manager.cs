@@ -666,7 +666,7 @@ public class GS2Manager : MonoBehaviour
             if (strKeyValue.Length == 2)
             {
                 string[] strFormationSlotArray = strKeyValue[1].Split(",");
-                for (int i = 0; i < UserDataManager.FORMATION_NUM; i++)
+                for (int i = 0; i < Formation.FORMATION_POSITION_NUM; i++)
                 {
                     string slot = strFormationSlotArray[i];
                     Debug.Log("charaId " + slot);
@@ -676,7 +676,7 @@ public class GS2Manager : MonoBehaviour
         CompleteConnect();
     }
 
-    public IEnumerator SetPlayerFormation(UserDataManager.Formation formation)
+    public IEnumerator SetPlayerFormation(Formation formation)
     {
         Debug.Assert(StartConnect());
         string strSerializedFormation = "formation001:" + formation.GetCharaId(0).ToString() + "," + formation.GetCharaId(1).ToString() + "," + formation.GetCharaId(2).ToString();

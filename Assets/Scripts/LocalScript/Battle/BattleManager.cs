@@ -8,8 +8,8 @@ public class BattleManager : MonoBehaviour
     // 敵の種類、数.
     // バトルの結果.
 
-    UserDataManager.Formation allyFormation;
-    UserDataManager.Formation enemyFormation;
+    Formation allyFormation;
+    Formation enemyFormation;
 
     BattleActor[] battleActorArray;
 
@@ -19,7 +19,7 @@ public class BattleManager : MonoBehaviour
         allyFormation = Application.userDataManager.GetFormation();
         SetUpEnemyFormation();
 
-        battleActorArray = new BattleActor[UserDataManager.FORMATION_NUM * 2];
+        battleActorArray = new BattleActor[Formation.FORMATION_POSITION_NUM * 2];
 
         battleActorArray[0] = GameObject.Find("BattleSpriteAnchor/AllyAnchor/BattleActor_0").GetComponent<BattleActor>();
         battleActorArray[1] = GameObject.Find("BattleSpriteAnchor/AllyAnchor/BattleActor_1").GetComponent<BattleActor>();
@@ -44,7 +44,7 @@ public class BattleManager : MonoBehaviour
 
     private void SetUpEnemyFormation()
     {
-        enemyFormation = new UserDataManager.Formation();
+        enemyFormation = new Formation();
         enemyFormation.Init();
 
         enemyFormation.SetChara(0, 201);

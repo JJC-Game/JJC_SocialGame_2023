@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharaGridRenderer_ClickCheck : CharaGridRenderer
 {
@@ -40,8 +41,27 @@ public class CharaGridRenderer_ClickCheck : CharaGridRenderer
             Transform trans = this.transform.Find("RectMask/VLayout/HLayout/CharaCell" + clickedCharaId.ToString());
             CharaCell charaCell = trans.GetComponent<CharaCell>();
             charaCell.SetCheckEnable(!charaCell.IsCheckEnable());
+
+            selectCharaInvokeEvent.Invoke();
         }
     }
 
+    public void AddListener(UnityAction action)
+    {
+        selectCharaInvokeEvent.AddListener(action);
+    }
+
+
+    public void RemoveListener(UnityAction action)
+    {
+        selectCharaInvokeEvent.RemoveListener(action);
+    }
+
+    public int GetClickedCharaId()
+    {
+        return clickedCharaId;
+    }
+
     int clickedCharaId;
+    UnityEvent selectCharaInvokeEvent = new UnityEvent();
 }
