@@ -30,7 +30,7 @@ public class BattleActor : MonoBehaviour
     GameObject healImagePrefab;
 
     TextMeshProUGUI damageText;
-    Vector2 targetPos;
+    Camera targetCamera;
 
     public enum TeamId
     {
@@ -67,6 +67,7 @@ public class BattleActor : MonoBehaviour
         damageImagePrefab = Resources.Load<GameObject>("Prefabs/Battle/DamageImage");
         healImagePrefab = Resources.Load<GameObject>("Prefabs/Battle/HealImage");
 
+        targetCamera = Camera.main;
     }
 
     public float GetHPRate()
@@ -130,10 +131,11 @@ public class BattleActor : MonoBehaviour
     {
         int damage = (int)((attackerCharaFixData.physicsAtk / 2 - attackerCharaFixData.physicsDef / 4) * 10f * (attackerSkillFixData.skillDamagePer / 100.0f));
 
-        Vector2 pos = new Vector2(targetPos.x, targetPos.y);
-        GameObject damageInstance = Instantiate(damageImagePrefab, pos, Quaternion.identity, Application.appCanvas.transform);
+        var targetWorldPos = this.transform.position;
+        var targetScreenPos = targetCamera.WorldToScreenPoint(targetWorldPos);
+        GameObject damageInstance = Instantiate(damageImagePrefab, targetScreenPos, Quaternion.identity, Application.appCanvas.transform);
 
-        damageText = GameObject.Find("DamageText").GetComponent<TextMeshProUGUI>();
+        damageText = damageImagePrefab.transform.Find("DamageImage2/DamageText").GetComponent<TextMeshProUGUI>();
         damageText.text = damage.ToString();
         Destroy(damageInstance, 1f);
 
