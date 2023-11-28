@@ -18,13 +18,15 @@ public class FormationRenderer : MonoBehaviour
         }
 
         currentSelectPositionIndex = 0;
+
+        charaGridRenderer_formation = FindObjectOfType<CharaGridRenderer_Formation>();
     }
     // Start is called before the first frame update
     void Start()
     {
         Refresh(Application.userDataManager.GetFormation());
         SelectPosition(0);
-        FindObjectOfType<CharaGridRenderer_ClickCheck>().AddListener(CharaSelect);
+        charaGridRenderer_formation.AddListener(CharaSelect);
     }
 
     // Update is called once per frame
@@ -59,8 +61,21 @@ public class FormationRenderer : MonoBehaviour
 
     public void CharaSelect()
     {
-        int charaId = FindObjectOfType<CharaGridRenderer_ClickCheck>().GetClickedCharaId();
+        // キャラクターの編成状況を更新する.
+        // UIを更新.
+        int charaId = charaGridRenderer_formation.GetClickedCharaId();
         positionRenderer[currentSelectPositionIndex].SetCharaId(charaId);
+        // 編成情報を更新.
+        Formation formation = Application.userDataManager.GetFormation();
+        formation.SetChara(currentSelectPositionIndex, charaId);
+
+
+        // チェックマークについて更新.
+        charaGridRenderer_formation.ClearCheck();
+        for (int positionIndex = 0; positionIndex < Formation.FORMATION_POSITION_NUM; positionIndex++)
+        {
+            charaGridRenderer_formation.SetCheckEnable(formation.GetCharaId(positionIndex), true);
+        }
     }
 
     // UI表示用.
@@ -68,5 +83,6 @@ public class FormationRenderer : MonoBehaviour
 
     // UI操作用.
     int currentSelectPositionIndex;
+    CharaGridRenderer_Formation charaGridRenderer_formation;
 
 }
