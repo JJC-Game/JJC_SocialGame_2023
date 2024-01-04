@@ -15,11 +15,14 @@ public class FixDataManager : MonoBehaviour
         inGameText_charaName.Load();
         inGameText_skillName = new InGameText_SkillName();
         inGameText_skillName.Load();
+        battleData = new BattleData();
+        battleData.Load();
 
         Debug.Log("CharaName 1 -> " + GetCharaName(1));
         Debug.Log("CharaImagePath 1 -> " + GetCharaImagePath(1));
         Debug.Log("SkillName 1 -> " + GetSkillName(1));
         Debug.Log("SkillEffectPath 1 -> " + GetSkillEffectPath(1));
+        battleData.DB_Disp();
     }
 
     // Update is called once per frame
@@ -79,4 +82,5 @@ public class FixDataManager : MonoBehaviour
     FixData_SkillFixData fixData_skillFixData;
     InGameText_CharaName inGameText_charaName;
     InGameText_SkillName inGameText_skillName;
+    BattleData battleData;
 }
