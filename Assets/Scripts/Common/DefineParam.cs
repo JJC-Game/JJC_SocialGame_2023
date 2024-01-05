@@ -8,6 +8,7 @@ public class DefineParam : MonoBehaviour
     public const int CHARA_INVALID = 0;
     public const int CHARA_MIN_ID  = 1;
     public const int CHARA_MAX_ID = 14;
+    public const int MENU_INVALID = -1;
 
     public const int START_SCENE_ID = (int)SCENE_ID.Lobby;
     public const int END_SCENE_ID = (int)SCENE_ID.Num;
@@ -20,6 +21,8 @@ public class DefineParam : MonoBehaviour
         System,
         Battle,
         Result,
+        BattleSelect,
+        BattleSelect_1gatsu,
         Num,
         Invalid,
     }
