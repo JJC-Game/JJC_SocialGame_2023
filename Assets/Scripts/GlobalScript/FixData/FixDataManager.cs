@@ -39,6 +39,10 @@ public class FixDataManager : MonoBehaviour
     {
         return fixData_skillFixData.GetFixData(skillId);
     }
+    public BattleData.BattleFixData GetBattleData(int battleId)
+    {
+        return battleData.GetFixData(battleId);
+    }
 
     public string GetCharaName(int charaId){
         return inGameText_charaName.GetCharaName(charaId);

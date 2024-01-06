@@ -26,4 +26,12 @@ public class DefineParam : MonoBehaviour
         Num,
         Invalid,
     }
+
+    public enum BATTLE_WAVE
+    {
+        WAVE_1 = 0,
+        WAVE_2 = 1,
+        WAVE_3 = 2,
+        END_WAVE = WAVE_3
+    }
 }

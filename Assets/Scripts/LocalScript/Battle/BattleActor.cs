@@ -32,6 +32,8 @@ public class BattleActor : MonoBehaviour
     TextMeshProUGUI damageText;
     Camera targetCamera;
 
+    BattleRenderer battleRenderer;
+
     public enum TeamId
     {
         Ally = 0,
@@ -68,6 +70,9 @@ public class BattleActor : MonoBehaviour
         healImagePrefab = Resources.Load<GameObject>("Prefabs/Battle/HealImage");
 
         targetCamera = Camera.main;
+
+        battleRenderer = transform.Find("BattleRenderer").GetComponent<BattleRenderer>();
+        battleRenderer.RefreshCharaId(charaId);
     }
 
     public float GetHPRate()

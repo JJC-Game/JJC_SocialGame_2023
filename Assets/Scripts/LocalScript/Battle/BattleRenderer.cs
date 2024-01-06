@@ -9,13 +9,18 @@ public class BattleRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string imagePath = Application.fixDataManager.GetCharaImagePath(charaId);
-        transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(imagePath);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void RefreshCharaId(int newCharaId)
+    {
+        charaId = newCharaId;
+        string imagePath = Application.fixDataManager.GetCharaImagePath(newCharaId);
+        transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(imagePath);
     }
 }

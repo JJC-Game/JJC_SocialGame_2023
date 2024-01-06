@@ -9,21 +9,24 @@ public class AppSceneManager : MonoBehaviour
 {
     public DefineParam.SCENE_ID currentSceneId;
 
+    // Scenario再生用.
     public int currentScenarioId;
     public int currentCharaId;
-
     UnityAction scenarioPopOutCallbackFunc;
     public DefineParam.SCENE_ID scenarioPopOutSceneId;
 
+    // UI更新用.
     UnityEvent refreshUserInfo = new UnityEvent();
 
+    // Battle再生用.
     enum BattleResult
     {
         Win,
         Lose
     }
-
     BattleResult battleResult;
+    public int currentBattleId = 1;
+    public DefineParam.BATTLE_WAVE currentBattleWave = DefineParam.BATTLE_WAVE.WAVE_1;
 
     void Awake(){
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -124,5 +127,25 @@ public class AppSceneManager : MonoBehaviour
     public bool IsBattleLose()
     {
         return battleResult == BattleResult.Lose;
+    }
+
+    public void SetBattleId(int battleId)
+    {
+        currentBattleId = battleId;
+    }
+
+    public int GetBattleId()
+    {
+        return currentBattleId;
+    }
+
+    public void SetBattleWave(DefineParam.BATTLE_WAVE battleWave)
+    {
+        currentBattleWave = battleWave;
+    }
+
+    public DefineParam.BATTLE_WAVE GetBattleWave()
+    {
+        return currentBattleWave;
     }
 }

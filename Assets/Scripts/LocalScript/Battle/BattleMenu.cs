@@ -20,6 +20,11 @@ public class BattleMenu : CommonLineMenu
             "バトル5",
         };
 
+        int[] menuItemBattleId =
+        {
+            1,2,3,4,5
+        };
+
         menuItemArray = new BattleMenuItem[menuItemString.Length];
 
         for (int itemIndex = 0; itemIndex < menuItemArray.Length; itemIndex++)
@@ -28,6 +33,9 @@ public class BattleMenu : CommonLineMenu
             menuItemArray[itemIndex] = menuItemInstance.GetComponent<BattleMenuItem>();
             menuItemInstance.transform.SetParent(menuBaseRectTrans);
             menuItemArray[itemIndex].SetText(menuItemString[itemIndex]);
+
+            BattleMenuItem battleMenuItem = menuItemInstance.GetComponent<BattleMenuItem>();
+            battleMenuItem.SetBattleId(menuItemBattleId[itemIndex]);
         }
     }
 
