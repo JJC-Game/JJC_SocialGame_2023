@@ -24,6 +24,7 @@ using Gs2.Gs2Formation.Model;
 using Gs2.Gs2Formation.Request;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GS2Manager : MonoBehaviour
 {
@@ -102,8 +103,22 @@ public class GS2Manager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(InitializeGS2());
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            StartCoroutine(InitializeGS2());
+        }
+        else
+        {
+            DummyLogin();
+        }
     }
+
+    void DummyLogin()
+    {
+        isCompleteLogin = true;
+        isConnecting = false;
+    }
+
     IEnumerator InitializeGS2()
     {
         // Setup general setting

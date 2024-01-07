@@ -75,6 +75,14 @@ public class CommonLineMenu : MonoBehaviour
         holdStartMousePosition = Input.mousePosition;
         currentMenuPosition = menuBaseRectTrans.anchoredPosition;
 
+        for (int itemIndex = 0; itemIndex < menuItemArray.Length; itemIndex++)
+        {
+            if (menuItemArray[itemIndex].IsPointing())
+            {
+                clickedMenuItemId = itemIndex;
+            }
+        }
+
         InterOnMouseButtonDown();
     }
 
@@ -88,6 +96,15 @@ public class CommonLineMenu : MonoBehaviour
         mouseHold = false;
 
         currentMenuPosition = menuBaseRectTrans.anchoredPosition;
+
+        Vector2 currentMousePosition = Input.mousePosition;
+        Vector2 diffPosition = currentMousePosition - holdStartMousePosition;
+        float diffLength = diffPosition.magnitude;
+
+        if (diffLength < 20 && clickedMenuItemId != DefineParam.MENU_INVALID)
+        {
+            menuItemArray[clickedMenuItemId].Click();
+        }
 
         InterOnMouseButtonUp();
     }

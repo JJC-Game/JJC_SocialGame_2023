@@ -39,26 +39,5 @@ public class BattleMenu : CommonLineMenu
         }
     }
 
-    public override void InterOnMouseButtonDown()
-    {
-        for (int itemIndex = 0; itemIndex < menuItemArray.Length; itemIndex++)
-        {
-            if (menuItemArray[itemIndex].IsPointing())
-            {
-                clickedMenuItemId = itemIndex;
-            }
-        }
-    }
 
-    public override void InterOnMouseButtonUp()
-    {
-        Vector2 currentMousePosition = Input.mousePosition;
-        Vector2 diffPosition = currentMousePosition - holdStartMousePosition;
-        float diffLength = diffPosition.magnitude;
-
-        if (diffLength < 20 && clickedMenuItemId != DefineParam.MENU_INVALID)
-        {
-            menuItemArray[clickedMenuItemId].Click();
-        }
-    }
 }

@@ -22,7 +22,6 @@ public class FixDataManager : MonoBehaviour
         Debug.Log("CharaImagePath 1 -> " + GetCharaImagePath(1));
         Debug.Log("SkillName 1 -> " + GetSkillName(1));
         Debug.Log("SkillEffectPath 1 -> " + GetSkillEffectPath(1));
-        battleData.DB_Disp();
     }
 
     // Update is called once per frame

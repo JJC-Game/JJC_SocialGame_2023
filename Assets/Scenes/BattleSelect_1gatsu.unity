@@ -201,10 +201,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155346060}
-  - component: {fileID: 155346061}
   - component: {fileID: 155346062}
+  - component: {fileID: 155346063}
   m_Layer: 5
-  m_Name: NormalBattleMenu
+  m_Name: BattleMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,18 +231,6 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: 0}
   m_SizeDelta: {x: 300, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &155346061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155346059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2025869dc4555df45ae7952f75debfac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &155346062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +248,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 155346061}
+        - m_Target: {fileID: 155346063}
           m_TargetAssemblyTypeName: CommonLineMenu, Assembly-CSharp
           m_MethodName: OnMouseButtonDown
           m_Mode: 1
@@ -276,7 +264,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 155346061}
+        - m_Target: {fileID: 155346063}
           m_TargetAssemblyTypeName: CommonLineMenu, Assembly-CSharp
           m_MethodName: OnMouseButtonUp
           m_Mode: 1
@@ -288,6 +276,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &155346063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155346059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83706db9b76b3d24abb8b1fe6ba46df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &221735569
 GameObject:
   m_ObjectHideFlags: 0
