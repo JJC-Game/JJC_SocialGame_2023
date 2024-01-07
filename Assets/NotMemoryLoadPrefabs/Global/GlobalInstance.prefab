@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4531258124524447852}
   - component: {fileID: 3502532896260921150}
   - component: {fileID: 2360566125616497386}
+  - component: {fileID: 3920710349158035943}
   m_Layer: 0
   m_Name: GlobalInstance
   m_TagString: Untagged
@@ -134,6 +135,8 @@ MonoBehaviour:
   currentScenarioId: 0
   currentCharaId: 0
   scenarioPopOutSceneId: 0
+  currentBattleId: 1
+  currentBattleWave: 0
 --- !u!114 &2360566125616497386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +149,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c718d9990d2534193e056bddaa3751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3920710349158035943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028314807912139667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0495478c96d852d4fa7be5305e78e15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedBackgroundIndex: 0
 --- !u!1 &6254567444179234668
 GameObject:
   m_ObjectHideFlags: 0

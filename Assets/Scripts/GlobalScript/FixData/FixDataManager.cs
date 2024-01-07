@@ -10,7 +10,9 @@ public class FixDataManager : MonoBehaviour
         fixData_charaFixData = new FixData_CharaFixData();
         fixData_charaFixData.Load();
         fixData_skillFixData = new FixData_SkillFixData();
-        fixData_skillFixData.Load(); 
+        fixData_skillFixData.Load();
+        fixData_backGroundFixData = new FixData_BackGroundFixData();
+        fixData_backGroundFixData.Load();
         inGameText_charaName = new InGameText_CharaName();
         inGameText_charaName.Load();
         inGameText_skillName = new InGameText_SkillName();
@@ -55,6 +57,16 @@ public class FixDataManager : MonoBehaviour
         return fixData_charaFixData.GetFixData(charaId).rarity.ToString();
     }
 
+    public string GetBackGroundImagePath(int backgroundId)
+    {
+        return fixData_backGroundFixData.GetFixData(backgroundId).imagePath;
+    }
+
+    public float GetBackGroundYOffset(int backgroundId)
+    {
+        return fixData_backGroundFixData.GetFixData(backgroundId).yOffset;
+    }
+
     public string GetCharaRarityFrameImage(int charaId)
     {
         switch (GetCharaRarity(charaId))
@@ -83,6 +95,7 @@ public class FixDataManager : MonoBehaviour
 
     FixData_CharaFixData fixData_charaFixData;
     FixData_SkillFixData fixData_skillFixData;
+    FixData_BackGroundFixData fixData_backGroundFixData;
     InGameText_CharaName inGameText_charaName;
     InGameText_SkillName inGameText_skillName;
     BattleData battleData;

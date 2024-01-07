@@ -953,6 +953,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalInstance
       objectReference: {fileID: 0}
+    - target: {fileID: 2145884777415041856, guid: edca1fa9aba6a2749bc2d3abeaa6e57c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145884777415041856, guid: edca1fa9aba6a2749bc2d3abeaa6e57c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4995857299741905065, guid: edca1fa9aba6a2749bc2d3abeaa6e57c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
