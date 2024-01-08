@@ -18,7 +18,6 @@ using Unity.Properties;
 using Gs2.Core.Domain;
 using Gs2.Gs2Identifier.Model;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
 using Gs2.Unity.Gs2Formation.Model;
 using Gs2.Gs2Formation.Model;
 using Gs2.Gs2Formation.Request;
