@@ -222,6 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharaID: 8
+  month111: 1
+  aisatu: "\u3088\u308D\u3057\u304F\u304A\u9858\u3044\u3057\u307E\u3059"
 --- !u!4 &109007704
 Transform:
   m_ObjectHideFlags: 0
