@@ -61,10 +61,10 @@ public class UIManager0115_202503_13 : MonoBehaviour
     }
     public void battlegrafical()
     {
-        BattleData.BattleFixData dataid = Application.fixDataManager.GetBattleData(1);
+        /*BattleData.BattleFixData dataid = Application.fixDataManager.GetBattleData(1);
         Debug.Log(Application.fixDataManager.GetCharaImagePath(dataid.battle1_front));
         Application.fixDataManager.GetCharaImagePath(dataid.battle1_front = front1);
         Application.fixDataManager.GetCharaImagePath(dataid.battle1_middle = middle1);
-        Application.fixDataManager.GetCharaImagePath(dataid.battle1_back = back1);
+        Application.fixDataManager.GetCharaImagePath(dataid.battle1_back = back1);*/
     }
 }
