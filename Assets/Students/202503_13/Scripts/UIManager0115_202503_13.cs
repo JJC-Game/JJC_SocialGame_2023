@@ -7,6 +7,8 @@ public class UIManager0115_202503_13 : MonoBehaviour
     public int CharaID;
     [SerializeField] int month111;
     [SerializeField] string aisatu = "よろしくお願いします。";
+    string front1, middle1, back1;
+    string imagePathfinder = "Assets/Resources/Textures/Enemy";
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class UIManager0115_202503_13 : MonoBehaviour
         Debug.Log(charaName);
 
         CharaTeam();//バトルに出ているキャラ名の表示
+
+        battlegrafical();
     }
     void Update()
     {
@@ -51,7 +55,16 @@ public class UIManager0115_202503_13 : MonoBehaviour
     }
     public void SpriteImageChara()
     {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = Resources.Load<Sprite>(front1);
         
-        
+    }
+    public void battlegrafical()
+    {
+        BattleData.BattleFixData dataid = Application.fixDataManager.GetBattleData(1);
+        Debug.Log(Application.fixDataManager.GetCharaImagePath(dataid.battle1_front));
+        Application.fixDataManager.GetCharaImagePath(dataid.battle1_front = front1);
+        Application.fixDataManager.GetCharaImagePath(dataid.battle1_middle = middle1);
+        Application.fixDataManager.GetCharaImagePath(dataid.battle1_back = back1);
     }
 }
